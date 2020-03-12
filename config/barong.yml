@@ -1,0 +1,18 @@
+activation_requirements:
+  email: 'verified'
+state_triggers:
+  banned:
+    - ban
+    - fraud
+  deleted:
+    - delete
+  locked:
+    - suspicious
+    - lock
+document_types:
+  - Passport
+  - Identity card
+  - Driver license
+  - Utility Bill
+  - Residental
+  - Institutional
