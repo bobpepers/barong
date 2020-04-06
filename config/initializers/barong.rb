@@ -34,6 +34,8 @@ end
 kstore = Barong::KeyStore.new(pkey)
 
 Barong::App.define do |config|
+  # General configuration
+  # https://github.com/openware/barong/blob/master/docs/configuration.md#general-configuration
   config.set(:app_name, 'Barong')
   config.set(:barong_domain, 'barong.io')
   config.set(:barong_uid_prefix, 'ID', regex: /^[A-z]{2,6}$/)
@@ -44,6 +46,12 @@ Barong::App.define do |config|
   config.set(:barong_session_name, '_barong_session')
   config.set(:redis_url, 'redis://localhost:6379/1')
   config.set(:barong_captcha, 'recaptcha', values: %w[none recaptcha geetest])
+
+  # Password configuration
+  # https://github.com/openware/barong/blob/master/docs/configuration.md#password-configuration
+  config.set(:password_regexp, '^(?=.*[[:lower:]])(?=.*[[:upper:]])(?=.*[[:digit:]])(?=.*[[:graph:]]).{8,80}$', type: :regexp)
+  config.set(:password_min_entropy, '14', type: :integer)
+  config.set(:password_use_dictionary, 'true', type: :bool)
 end
 
 Barong::GeoIP.lang = Barong::App.config.barong_geoip_lang
