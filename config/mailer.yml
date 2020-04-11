@@ -25,9 +25,9 @@ events:
       en:
         subject: Registration Confirmation
         template_path: email_confirmation.en.html.erb
-      ru:
+      pt:
         subject: Подтверждение Регистрации
-        template_path: email_confirmation.ru.html.erb
+        template_path: email_confirmation.pt.html.erb
 
   - name: Password Reset
     key: user.password.reset.token
@@ -36,9 +36,9 @@ events:
       en:
         subject: Password Reset
         template_path: password_reset.en.html.erb
-      ru:
+      pt:
         subject: Сброс Пароля
-        template_path: password_reset.ru.html.erb
+        template_path: password_reset.pt.html.erb
 
   - name: Label Created
     key: label.created
