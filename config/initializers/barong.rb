@@ -53,6 +53,16 @@ Barong::App.define do |config|
   config.set(:password_min_entropy, '14', type: :integer)
   config.set(:password_use_dictionary, 'true', type: :bool)
 
+  # Dependencies configuration (vault, redis, rabbitmq) ---------------
+  # https://github.com/openware/barong/blob/master/docs/configuration.md#dependencies-configuration-vault-redis-rabbitmq
+  config.set(:event_api_rabbitmq_host, 'localhost')
+  config.set(:event_api_rabbitmq_port, '5672')
+  config.set(:event_api_rabbitmq_username, 'guest')
+  config.set(:event_api_rabbitmq_password, 'guest')
+  config.set(:vault_address, 'http://localhost:8200')
+  config.set(:vault_token, 'changeme')
+  config.set(:redis_url, 'redis://localhost:6379/1')
+
   # SMTP configuration ------------------------------------------------
   # https://github.com/openware/barong/blob/master/docs/general/env_configuration.md#smtp-configuration
   config.set(:sender_email, 'noreply@barong.io')
