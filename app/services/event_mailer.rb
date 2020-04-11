@@ -88,6 +88,10 @@ class EventMailer
     user  = User.includes(:profile).find_by(uid: obj.record.user.uid)
     language = user.language.to_sym
 
+    Rails.logger.info { "Language #{language}" }
+    Rails.logger.info { "event #{event}" }
+    Rails.logger.info { "obj #{obj}" }
+
     unless config[:templates].key?(language)
       Rails.logger.error { "Language #{language} is not supported. Skipping." }
       return
