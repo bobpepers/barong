@@ -20,6 +20,9 @@ gem 'fog-aws', '~> 3.5.2'
 gem 'fog-google', '~> 1.9.1'
 ##
 
+# GLI
+gem 'gli', '~> 2.19.0'
+
 gem 'hiredis', '~> 0.6.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

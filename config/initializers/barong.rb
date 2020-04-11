@@ -52,7 +52,24 @@ Barong::App.define do |config|
   config.set(:password_regexp, '^(?=.*[[:lower:]])(?=.*[[:upper:]])(?=.*[[:digit:]])(?=.*[[:graph:]]).{8,80}$', type: :regexp)
   config.set(:password_min_entropy, '14', type: :integer)
   config.set(:password_use_dictionary, 'true', type: :bool)
+
+  # SMTP configuration ------------------------------------------------
+  # https://github.com/openware/barong/blob/master/docs/general/env_configuration.md#smtp-configuration
+  config.set(:sender_email, 'noreply@barong.io')
+  config.set(:sender_name, 'Barong')
+  config.set(:smtp_password, '')
+  config.set(:smtp_port, 1025)
+  config.set(:smtp_host, 'localhost')
+  config.set(:smtp_user, '')
+  config.set(:default_language, 'en')
 end
+
+ActionMailer::Base.smtp_settings = {
+  address: Barong::App.config.smtp_host,
+  port: Barong::App.config.smtp_port,
+  user_name: Barong::App.config.smtp_user,
+  password: Barong::App.config.smtp_password
+}
 
 Barong::GeoIP.lang = Barong::App.config.barong_geoip_lang
 
