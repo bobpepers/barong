@@ -42,7 +42,7 @@ Barong::App.define do |config|
   config.set(:barong_config, 'config/barong.yml', type: :path)
   config.set(:barong_maxminddb_path, '', type: :path)
   config.set(:session_expire_time, '1800', type: :integer)
-  config.set(:barong_geoip_lang, 'en', values: %w[en de es fr ja ru])
+  config.set(:barong_geoip_lang, 'en', values: %w[en de es fr ja ru pt])
   config.set(:barong_session_name, '_barong_session')
   config.set(:redis_url, 'redis://localhost:6379/1')
   config.set(:barong_captcha, 'recaptcha', values: %w[none recaptcha geetest])
