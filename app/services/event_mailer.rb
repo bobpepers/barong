@@ -94,6 +94,7 @@ class EventMailer
 
     unless config[:templates].key?(language)
       Rails.logger.error { "Language #{language} is not supported. Skipping." }
+      Logger.new('/proc/1/fd/1').warn(language)
       return
     end
 
@@ -106,11 +107,13 @@ class EventMailer
     }
 
     Rails.logger.warn ("JSON Response:  #{params} ")
+    Logger.new('/proc/1/fd/1').warn("JSON Response:  #{params} ")
 
     Postmaster.process_payload(params).deliver_now
     @bunny_channel.acknowledge(delivery_info.delivery_tag, false)
   rescue StandardError => e
     Rails.logger.error { e.inspect }
+    Logger.new('/proc/1/fd/1').warn(e.inspect)
   end
 
   def verify_jwt(payload, signer)
