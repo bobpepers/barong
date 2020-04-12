@@ -90,7 +90,7 @@ class EventMailer
 
     #Rails.logger.warn { "obj #{obj}" }
     #language = obj.record.language.downcase.to_sym
-    #Rails.logger.warn { "Language #{language}" }
+    Rails.logger.warn { "Language #{language}" }
 
     unless config[:templates].key?(language)
       Rails.logger.error { "Language #{language} is not supported. Skipping." }
@@ -104,6 +104,8 @@ class EventMailer
       changes: obj.changes,
       user: user
     }
+
+    Rails.logger.warn ("JSON Response:  #{params} ")
 
     Postmaster.process_payload(params).deliver_now
     @bunny_channel.acknowledge(delivery_info.delivery_tag, false)
