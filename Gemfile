@@ -29,7 +29,7 @@ gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.11', '>= 3.12.4'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -37,7 +37,7 @@ gem 'mini_racer', platforms: :ruby
 
 gem 'maxmind-db', '~> 1.0'
 
-gem 'kaminari'
+gem 'kaminari', '>= 1.1.1'
 gem 'peatio', '~> 0.4.4'
 gem 'rack-cors', '~> 1.0.2'
 
@@ -66,7 +66,7 @@ gem 'browser', require: "browser/browser"
 gem 'bump'
 
 # Use gem to verify recatpcha on server side
-gem 'recaptcha'
+gem 'recaptcha', '>= 5.2.1'
 # Password validators
 gem 'strong_password', '~> 0.0.8'
 # Use ActiveStorage variant
@@ -78,13 +78,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' or 'binding.pry' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot_rails',  '~> 4.11'
+  gem 'factory_bot_rails',  '~> 4.11', '>= 4.11.1'
   gem 'faker',              '~> 2.1'
 end
 
 group :development do
   gem 'grape_on_rails_routes', '~> 0.3.2'
-  gem 'web-console',  '>= 3.3.0'
+  gem 'web-console',  '>= 3.7.0'
   gem 'listen',       '>= 3.0.5', '< 3.2'
   gem 'annotate',     '~> 2.7'
   gem 'spring'
@@ -93,10 +93,10 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.29.0'
   # gem 'selenium-webdriver'
   # gem 'chromedriver-helper'
-  gem 'rspec-rails',         '~> 3.8'
+  gem 'rspec-rails', '~> 3.9', '>= 3.9.0'
   gem 'shoulda-matchers',    '~> 4.0.0.rc1'
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing', '>= 1.0.4'
 end
