@@ -6,6 +6,7 @@ default: &default
   reaping_frequency: 50
   connect_timeout: 5
   read_timeout: 5
+  reconnect: true
   host: <%= ENV.fetch('DATABASE_HOST', '127.0.0.1') %>
   port: <%= ENV.fetch('DATABASE_PORT', 3306) %>
   username: <%= ENV.fetch('DATABASE_USER', 'root') %>
