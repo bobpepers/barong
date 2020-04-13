@@ -68,6 +68,7 @@ class EventMailer
   end
 
   def handle_message(delivery_info, _metadata, payload)
+    retries ||= 0
     exchange    = @exchanges.select { |_, ex| ex[:name] == delivery_info[:exchange] }
     exchange_id = exchange.keys.first.to_s
     signer      = exchange[exchange_id.to_sym][:signer]
@@ -111,9 +112,13 @@ class EventMailer
 
     Postmaster.process_payload(params).deliver_now
     @bunny_channel.acknowledge(delivery_info.delivery_tag, false)
+
   rescue StandardError => e
+    Logger.new('/proc/1/fd/1').warn("Retry:  #{retries}")
     Rails.logger.error { e.inspect }
     Logger.new('/proc/1/fd/1').warn(e.inspect)
+    sleep(2)
+    retry if (retries += 1) < 10
   end
 
   def verify_jwt(payload, signer)
