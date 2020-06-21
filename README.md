@@ -1,3 +1,4 @@
+
 [travis]: https://travis-ci.org/rubykube/barong
 [codeclimate]: https://codeclimate.com/github/rubykube/barong/maintainability
 [openware.com]: https://www.openware.com
